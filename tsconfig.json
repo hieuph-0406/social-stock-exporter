@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "typeRoots": ["node_modules/@types"],
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strict": true,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "paths": {
+      "@/api/*": ["src/api/*"],
+      "@/common/*": ["src/common/*"],
+      "@/constants/*": ["src/constants/*"],
+      "@/database/*": ["src/database/*"],
+      "@/decorators/*": ["src/decorators/*"],
+      "@/exceptions/*": ["src/exceptions/*"],
+      "@/guards/*": ["src/guards/*"],
+      "@/health/*": ["src/health/*"],
+      "@/interceptors/*": ["src/interceptors/*"],
+      "@/shared/*": ["src/shared/*"],
+      "@/types/*": ["src/types/*"],
+      "@/utilities/*": ["src/utilities/*"],
+      "@/validation/*": ["src/validation/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

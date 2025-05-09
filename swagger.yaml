@@ -1,0 +1,137 @@
+openapi: 3.0.0
+paths:
+  /health:
+    get:
+      operationId: check
+      parameters: []
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestExceptionDto"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestExceptionDto"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 500
+                  message: Internal server error
+        "503":
+          description: The Health Check is not successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  info:
+                    type: object
+                    example:
+                      database: &a1
+                        status: up
+                    additionalProperties:
+                      type: object
+                      required:
+                        - status
+                      properties:
+                        status:
+                          type: string
+                      additionalProperties: true
+                    nullable: true
+                  error:
+                    type: object
+                    example:
+                      redis: &a2
+                        status: down
+                        message: Could not connect
+                    additionalProperties:
+                      type: object
+                      required:
+                        - status
+                      properties:
+                        status:
+                          type: string
+                      additionalProperties: true
+                    nullable: true
+                  details:
+                    type: object
+                    example:
+                      database: *a1
+                      redis: *a2
+                    additionalProperties:
+                      type: object
+                      required:
+                        - status
+                      properties:
+                        status:
+                          type: string
+                      additionalProperties: true
+      tags:
+        - HealthCheck
+  /recipes:
+    get:
+      operationId: getRecipes
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /recipes/crawl:
+    get:
+      operationId: crawlRecipes
+      parameters: []
+      responses:
+        "200":
+          description: ""
+info:
+  title: API docs
+  description: "**About API docs** "
+  version: "1.0"
+  contact: {}
+tags: []
+servers:
+  - url: /
+    description: Local
+components:
+  schemas:
+    ErrorDetailDto:
+      type: object
+      properties:
+        property:
+          type: string
+        errorCode:
+          type: string
+        errorMessage:
+          type: string
+      required:
+        - property
+        - errorCode
+        - errorMessage
+    BadRequestExceptionDto:
+      type: object
+      properties:
+        statusCode:
+          type: number
+        message:
+          type: array
+          items:
+            $ref: "#/components/schemas/ErrorDetailDto"
+        error:
+          type: string
+      required:
+        - statusCode
+        - message
+        - error

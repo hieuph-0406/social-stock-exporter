@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+REGEX="^(feature|bugfix|hotfix|chore|release|merge)\.([a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*)$"
+
+echo "Branch name: $BRANCH"
+if ! echo "$BRANCH" | grep -qE "$REGEX"; then
+  echo "Your commit was rejected due to branching name"
+  echo "Please rename your branch with '(feature|bugfix|hotfix|chore|release|merge)(.<ticket>?).<subject-example>' syntax"
+  exit 1
+fi
+
+yarn build:swagger
+yarn lint-staged

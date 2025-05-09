@@ -1,0 +1,20 @@
+/* eslint-disable no-undef */
+process.env.NODE_ENV = 'development';
+process.env.MODULES_SET = 'monolith';
+process.env.APP_PORT = '4001';
+process.env.APP_URL = 'http://localhost:3000';
+process.env.APP_TIMEOUT = '3000';
+process.env.APP_DEBUG = 'true';
+process.env.APP_CORS_ORIGIN = 'http://localhost:3000,http://example.com';
+process.env.LOG_LEVEL = 'debug';
+process.env.LOG_PRETTY = 'true';
+process.env.TZ = 'UTC';
+process.env.DB_HOST = 'localhost';
+process.env.DB_PORT = '15432';
+process.env.DB_USERNAME = 'postgres';
+process.env.DB_PASSWORD = 'postgres';
+process.env.DB_NAME = 'postgres';
+process.env.DB_USE_SSL = 'false';
+process.env.ENABLE_ORM_LOGS = 'error,warn,query';
+process.env.MAIL_FROM = 'mail_from@example.com';
+process.env.SEND_GRID_API_KEY = 'SG.xxx';

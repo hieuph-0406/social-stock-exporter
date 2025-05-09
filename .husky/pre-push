@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+changed_swagger=$(git status --short swagger.yaml)
+if [ -n "$changed_swagger" ]; then
+  echo "The file 'swagger.yaml' has been changed. Please add it and commit before pushing."
+  exit 1
+fi
+
+changed_files=$(git diff --name-only HEAD HEAD~ -- '*.ts' '*.js')
+if [ -n "$changed_files" ]; then
+  echo "Running tests due to changes in the following TS/JS files:"
+  echo "$changed_files"
+  yarn test --runInBand
+else
+  echo "No TS/JS files have been changed. Skipping tests."
+fi
