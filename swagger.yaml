@@ -82,16 +82,9 @@ paths:
                       additionalProperties: true
       tags:
         - HealthCheck
-  /recipes:
+  /stock-export/hot-stocks:
     get:
-      operationId: getRecipes
-      parameters: []
-      responses:
-        "200":
-          description: ""
-  /recipes/crawl:
-    get:
-      operationId: crawlRecipes
+      operationId: getHotStockSymbols
       parameters: []
       responses:
         "200":
