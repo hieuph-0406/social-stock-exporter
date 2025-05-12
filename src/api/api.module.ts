@@ -3,10 +3,10 @@ import { AppConfigService } from '@/shared/services/app-config.service';
 import { SharedModule } from '@/shared/shared.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { RecipeCrawlerModule } from './recipe-crawler/recipe-crawler.module';
+import { StockExportModule } from './stock-export/stock-export.module';
 
 @Module({
-  imports: [SharedModule, ConfigModule, HealthModule, RecipeCrawlerModule],
+  imports: [SharedModule, ConfigModule, HealthModule, StockExportModule],
   providers: [AppConfigService],
 })
 export class ApiModule {}
