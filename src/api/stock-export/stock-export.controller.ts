@@ -11,7 +11,6 @@ export class StockExportController {
 
   @Get('hot-stocks')
   async getHotStockSymbols() {
-    await this.tickerService.crawlHOSETickers();
-    return this.stockExportService.extractStockSymbols();
+    return this.stockExportService.extractStockSymbolsFromFile();
   }
 }
